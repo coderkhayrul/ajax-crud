@@ -19,6 +19,10 @@
         <div class="row">
             <!-- FORM -->
             <div class="col-md-4">
+                <div class=" bg-dark display-5 text-primary text-center">
+                    Student
+                </div>
+                <div id="message" class="my-2"></div>
                 <div class="form-group mb-2">
                     <label class="control-label" for="" clas>Student Name</label>
                     <input class="form-control" type="text" id="studnetName" placeholder="Student Name">
