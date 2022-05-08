@@ -32,12 +32,12 @@
                     <input class="form-control" type="text" id="studnetEmail" placeholder="Student Email">
                 </div>
                 <div class="form-group mb-2">
-                    <label class="control-label" for="">Student Name</label>
+                    <label class="control-label" for="">Student Phone</label>
                     <input class="form-control" type="text" id="studnetPhone" placeholder="Student Phone">
                 </div>
                 <div class="form-group mb-2">
-                    <label class="control-label" for="">Student Name</label>
-                    <textarea name="" id="studentAddress" class="form-control" placeholder="Student Address"></textarea>
+                    <label class="control-label" for="">Student Address</label>
+                    <textarea id="studentAddress" class="form-control" placeholder="Student Address"></textarea>
                 </div>
                 <div class="form-group mt-3">
                     <button id="save" class="btn btn-success form-control mb-2"> SAVE</button>

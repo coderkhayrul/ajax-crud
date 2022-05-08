@@ -10,15 +10,28 @@ jQuery(document).ready(function () {
 
 // Add Student
 function student_add(){
+
+    // Get Value From Index Page
+    var studnetName = $('#studnetName').val();
+    var studnetEmail = $('#studnetEmail').val();
+    var studnetPhone = $('#studnetPhone').val();
+    var studentAddress = $('#studentAddress').val();
+
     $.ajax({
         'url': "operation.php",
         'type': "POST",
         'data': {
-            checker : 'insert',
+            studnetName    : studnetName,
+            studnetEmail   : studnetEmail,
+            studnetPhone   : studnetPhone,
+            studentAddress : studentAddress,
+            checker        : 'insert',
         },
         success: function (response) {
-            $('#message').html(response);
+            $('#message').html(response).fadeIn();
+            $('#message').html(response).fadeOut(5000);
         }
+        
     });
 }
 
@@ -31,7 +44,8 @@ function student_update(){
             checker : 'update',
         },
         success: function (response) {
-            $('#message').html(response);
+            $('#message').html(response).fadeIn();
+            $('#message').html(response).fadeOut(5000);
         }
     });
 }
