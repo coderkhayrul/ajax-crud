@@ -1,5 +1,6 @@
 jQuery(document).ready(function () {
     // e.preventDefault();
+    student_all()
     jQuery('#save').click(function () {
         student_add();
     });
@@ -7,6 +8,22 @@ jQuery(document).ready(function () {
         student_update();
     });
 });
+
+
+// Show All Student
+function student_all(){
+    $.ajax({
+        url: "operation.php",
+        type: "POST",
+        data: {
+            checker : 'students',
+        },
+        success: function (response) {
+            $('.show-table').html(response);
+        }
+    });
+}
+
 
 // Add Student
 function student_add(){
@@ -30,8 +47,9 @@ function student_add(){
         success: function (response) {
             $('#message').html(response).fadeIn();
             $('#message').html(response).fadeOut(5000);
+            student_all();
         }
-        
+
     });
 }
 
@@ -49,3 +67,5 @@ function student_update(){
         }
     });
 }
+
+
