@@ -55,7 +55,7 @@ function insert(){
     }else {
 
         // Student Insert Query
-        $commend = "INSERT INTO student(studnet_name, studnet_email, studnet_phone, studnet_address) 
+        $commend = "INSERT INTO student(student_name, student_email, student_phone, student_address) 
         VALUES('$studnetName','$studnetEmail','$studnetPhone', '$studentAddress')";
         $data = $con->query($commend);
         
