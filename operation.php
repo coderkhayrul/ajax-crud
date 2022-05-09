@@ -4,7 +4,7 @@ $check = $_POST['checker'];
 
 $check();
 
-
+// Get All Student
 function students() {
     global $con;
 
@@ -32,12 +32,10 @@ function students() {
             <td>". $student['student_address'] ."</td>
             <td>
                 <button onclick='student_edit(". $student['student_id'] .")' class='btn btn-primary btn-sm'><i class='fas fa-edit'></i></button>
-                <button data-bs-toggle='modal' data-bs-target='#deletModel' class='btn btn-danger btn-sm'><i class='fas fa-trash'></i></button>
+                <button data-bs-toggle='modal' data-bs-target='#deletModel". $student['student_id'] ."' class='btn btn-danger btn-sm'><i class='fas fa-trash'></i></button>
             </td>
-        </tr>";
-    }
-    $allData .= "</tbody></table>
-        <div class='modal fade' id='deletModel' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+        </tr>
+        <div class='modal fade' id='deletModel". $student['student_id'] ."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
         <div class='modal-dialog'>
         <div class='modal-content'>
             <div class='modal-header'>
@@ -54,6 +52,8 @@ function students() {
         </div>
         </div>
     </div>";
+    }
+    $allData .= "</tbody></table>";
     echo $allData;
 }
 
@@ -64,12 +64,13 @@ function insert(){
     $studentEmail = $_POST['studentEmail'];
     $studentPhone = $_POST['studentPhone'];
     $studentAddress = $_POST['studentAddress'];
+    $studentId = $_POST['studentId'];
 
-    // Insert Validation Check
+    if (empty($studentId)) {
+        // Insert Validation Check
     if (empty($studentName) || empty($studentEmail) || empty($studentPhone) || empty($studentAddress)) {
         echo '<div class="alert alert-danger">Fill the All fields !</div>';
     }else {
-
         // Student Insert Query
         $commend = "INSERT INTO student(student_name, student_email, student_phone, student_address) 
         VALUES('$studentName','$studentEmail','$studentPhone', '$studentAddress')";
@@ -82,6 +83,10 @@ function insert(){
             echo '<div class="alert alert-danger">Student Created Failed!</div>';
         }
     }
+    }else {
+        echo '<div class="alert alert-danger">Student Created Failed!</div>';
+    }
+    
 }
 
 // Student Edit
@@ -94,15 +99,39 @@ function edit(){
     foreach ($students as $student){
         $data = $student;
     }
-    
     echo json_encode($data);
 }
 
 
-
 // Student Update
 function update(){
-    echo '<div class="alert alert-success">Student Updated</div>';
+    global $con;
+    $studentName = $_POST['studentName'];
+    $studentEmail = $_POST['studentEmail'];
+    $studentPhone = $_POST['studentPhone'];
+    $studentAddress = $_POST['studentAddress'];
+    $studentId = $_POST['studentId'];
+
+    // Insert Validation Check
+    if (empty($studentId)) {
+        echo '<div class="alert alert-danger">Student Can Not Be Updated!</div>';
+    }else {
+        
+        if (empty($studentName) || empty($studentEmail) || empty($studentPhone) || empty($studentAddress)) {
+            echo '<div class="alert alert-danger">Data Not In Filled!</div>';
+        }else {
+            // Student Insert Query
+            $commend = "UPDATE student SET student_name = '$studentName', student_email = '$studentEmail', student_phone = '$studentPhone', student_address = '$studentAddress' WHERE student_id = '$studentId'";
+            $data = $con->query($commend);
+            
+            // Student Update Check
+            if ($data) {
+                echo '<div class="alert alert-success">Student Update Success</div>';
+            }else{
+                echo '<div class="alert alert-danger">Student Update Failed!</div>';
+            }
+        }
+    }
 
 }
 

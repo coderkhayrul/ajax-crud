@@ -39,6 +39,7 @@
                     <label class="control-label" for="">Student Address</label>
                     <textarea id="studentAddress" class="form-control" placeholder="Student Address"></textarea>
                 </div>
+                <input class="form-control" type="hidden" id="studentId">
                 <div class="form-group mt-3">
                     <button id="save" class="btn btn-success form-control mb-2"> SAVE</button>
                     <button id="update" class="btn btn-primary form-control"> UPDATE</button>

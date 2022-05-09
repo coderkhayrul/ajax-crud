@@ -33,6 +33,7 @@ function student_add(){
     var studentEmail = $('#studentEmail').val();
     var studentPhone = $('#studentPhone').val();
     var studentAddress = $('#studentAddress').val();
+    var studentId = $('#studentId').val();
 
     $.ajax({
         'url': "operation.php",
@@ -42,6 +43,7 @@ function student_add(){
             studentEmail   : studentEmail,
             studentPhone   : studentPhone,
             studentAddress : studentAddress,
+            studentId : studentId,
             checker        : 'insert',
         },
         success: function (response) {
@@ -67,6 +69,7 @@ function student_edit($student_id){
             $('#studentEmail').val(response.student_email);
             $('#studentPhone').val(response.student_phone);
             $('#studentAddress').val(response.student_address);
+            $('#studentId').val(response.student_id);
         }
     });
 }
@@ -76,16 +79,30 @@ function student_edit($student_id){
 
 // Update Student
 function student_update(){
+
+    var studentName = $('#studentName').val();
+    var studentEmail = $('#studentEmail').val();
+    var studentPhone = $('#studentPhone').val();
+    var studentAddress = $('#studentAddress').val();
+    var studentId = $('#studentId').val();
+
     $.ajax({
-        url: "operation.php",
-        type: "POST",
-        data: {
-            checker : 'update',
+        'url': "operation.php",
+        'type': "POST",
+        'data': {
+            studentName    : studentName,
+            studentEmail   : studentEmail,
+            studentPhone   : studentPhone,
+            studentAddress : studentAddress,
+            studentId      : studentId,
+            checker        : 'update',
         },
         success: function (response) {
             $('#message').html(response).fadeIn();
             $('#message').html(response).fadeOut(3000);
+            student_all();
         }
+
     });
 }
 
@@ -102,7 +119,7 @@ function student_delete($student_id){
             $('#message').html(response).fadeIn();
             $('#message').html(response).fadeOut(3000);
             student_all();
-            $('.modal').modal('hide');
+            $('.modal').modal('dispose');
         }
     });
 }
