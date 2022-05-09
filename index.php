@@ -25,15 +25,15 @@
                 <div id="message" class="my-2"></div>
                 <div class="form-group mb-2">
                     <label class="control-label" for="" clas>Student Name</label>
-                    <input class="form-control" type="text" id="studnetName" placeholder="Student Name">
+                    <input class="form-control" type="text" id="studentName" placeholder="Student Name">
                 </div>
                 <div class="form-group mb-2">
                     <label class="control-label" for="">Student Email</label>
-                    <input class="form-control" type="text" id="studnetEmail" placeholder="Student Email">
+                    <input class="form-control" type="text" id="studentEmail" placeholder="Student Email">
                 </div>
                 <div class="form-group mb-2">
                     <label class="control-label" for="">Student Phone</label>
-                    <input class="form-control" type="text" id="studnetPhone" placeholder="Student Phone">
+                    <input class="form-control" type="text" id="studentPhone" placeholder="Student Phone">
                 </div>
                 <div class="form-group mb-2">
                     <label class="control-label" for="">Student Address</label>

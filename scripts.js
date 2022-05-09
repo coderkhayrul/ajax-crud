@@ -29,18 +29,18 @@ function student_all(){
 function student_add(){
 
     // Get Value From Index Page
-    var studnetName = $('#studnetName').val();
-    var studnetEmail = $('#studnetEmail').val();
-    var studnetPhone = $('#studnetPhone').val();
+    var studentName = $('#studentName').val();
+    var studentEmail = $('#studentEmail').val();
+    var studentPhone = $('#studentPhone').val();
     var studentAddress = $('#studentAddress').val();
 
     $.ajax({
         'url': "operation.php",
         'type': "POST",
         'data': {
-            studnetName    : studnetName,
-            studnetEmail   : studnetEmail,
-            studnetPhone   : studnetPhone,
+            studentName    : studentName,
+            studentEmail   : studentEmail,
+            studentPhone   : studentPhone,
             studentAddress : studentAddress,
             checker        : 'insert',
         },

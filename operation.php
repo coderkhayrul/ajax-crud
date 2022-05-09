@@ -44,19 +44,19 @@ function students() {
 // Student Insert
 function insert(){
     global $con;
-    $studnetName = $_POST['studnetName'];
-    $studnetEmail = $_POST['studnetEmail'];
-    $studnetPhone = $_POST['studnetPhone'];
+    $studentName = $_POST['studentName'];
+    $studentEmail = $_POST['studentEmail'];
+    $studentPhone = $_POST['studentPhone'];
     $studentAddress = $_POST['studentAddress'];
 
     // Insert Validation Check
-    if (empty($studnetName) || empty($studnetEmail) || empty($studnetPhone) || empty($studentAddress)) {
+    if (empty($studentName) || empty($studentEmail) || empty($studentPhone) || empty($studentAddress)) {
         echo '<div class="alert alert-danger">Fill the All fields !</div>';
     }else {
 
         // Student Insert Query
         $commend = "INSERT INTO student(student_name, student_email, student_phone, student_address) 
-        VALUES('$studnetName','$studnetEmail','$studnetPhone', '$studentAddress')";
+        VALUES('$studentName','$studentEmail','$studentPhone', '$studentAddress')";
         $data = $con->query($commend);
         
         // Student Insert Check
@@ -71,7 +71,7 @@ function insert(){
 
 
 
-// Studnet Update
+// student Update
 function update(){
     echo '<div class="alert alert-success">Student Updated</div>';
 
