@@ -15,7 +15,7 @@
 </head>
 
 <body class="bg-secondary">
-    <div class="container my-5">
+    <div class="px-2 my-5">
         <div class="row">
             <!-- FORM -->
             <div class="col-md-4">

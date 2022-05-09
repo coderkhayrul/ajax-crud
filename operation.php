@@ -26,10 +26,10 @@ function students() {
     foreach ($students as $student) {
         $allData .= "<tr>
             <th scope='row'>". $sl++ ."</th>
-            <td>". $student['studnet_name'] ."</td>
-            <td>". $student['studnet_email'] ."</td>
-            <td>". $student['studnet_phone'] ."</td>
-            <td>". $student['studnet_address'] ."</td>
+            <td>". $student['student_name'] ."</td>
+            <td>". $student['student_email'] ."</td>
+            <td>". $student['student_phone'] ."</td>
+            <td>". $student['student_address'] ."</td>
             <td>
                 <button class='btn btn-primary btn-sm'><i class='fas fa-edit'></i></button>
                 <button class='btn btn-danger btn-sm'><i class='fas fa-trash'></i></button>
