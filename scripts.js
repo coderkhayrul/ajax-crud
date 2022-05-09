@@ -46,12 +46,33 @@ function student_add(){
         },
         success: function (response) {
             $('#message').html(response).fadeIn();
-            $('#message').html(response).fadeOut(5000);
+            $('#message').html(response).fadeOut(3000);
             student_all();
         }
 
     });
 }
+
+function student_edit($student_id){
+    $.ajax({
+        type: "POST",
+        url: "operation.php",
+        data: {
+            student_id : $student_id,
+            checker: 'edit',
+        },
+        dataType: "json",
+        success: function (response) {
+            $('#studentName').val(response.student_name);
+            $('#studentEmail').val(response.student_email);
+            $('#studentPhone').val(response.student_phone);
+            $('#studentAddress').val(response.student_address);
+        }
+    });
+}
+
+
+
 
 // Update Student
 function student_update(){
@@ -63,9 +84,26 @@ function student_update(){
         },
         success: function (response) {
             $('#message').html(response).fadeIn();
-            $('#message').html(response).fadeOut(5000);
+            $('#message').html(response).fadeOut(3000);
         }
     });
 }
 
+
+function student_delete($student_id){
+    $.ajax({
+        type: "POST",
+        url: "operation.php",
+        data: {
+            student_id : $student_id,
+            checker: 'delete',
+        },
+        success: function (response) {
+            $('#message').html(response).fadeIn();
+            $('#message').html(response).fadeOut(3000);
+            student_all();
+            $('.modal').modal('hide');
+        }
+    });
+}
 

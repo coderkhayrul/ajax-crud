@@ -31,14 +31,30 @@ function students() {
             <td>". $student['student_phone'] ."</td>
             <td>". $student['student_address'] ."</td>
             <td>
-                <button class='btn btn-primary btn-sm'><i class='fas fa-edit'></i></button>
-                <button class='btn btn-danger btn-sm'><i class='fas fa-trash'></i></button>
+                <button onclick='student_edit(". $student['student_id'] .")' class='btn btn-primary btn-sm'><i class='fas fa-edit'></i></button>
+                <button data-bs-toggle='modal' data-bs-target='#deletModel' class='btn btn-danger btn-sm'><i class='fas fa-trash'></i></button>
             </td>
         </tr>";
     }
-    $allData .= "</tbody></table>";
+    $allData .= "</tbody></table>
+        <div class='modal fade' id='deletModel' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+        <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+            <h5 class='modal-title' id='exampleModalLabel'>Are You Went To Delete?</h5>
+            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+            </div>
+            <div class='modal-body'>
+            Student Delete
+            </div>
+            <div class='modal-footer'>
+            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+            <button onclick='student_delete(". $student['student_id'] .")' type='button' class='btn btn-danger'>Delete</button>
+            </div>
+        </div>
+        </div>
+    </div>";
     echo $allData;
-
 }
 
 // Student Insert
@@ -68,11 +84,40 @@ function insert(){
     }
 }
 
+// Student Edit
+function edit(){
+    global $con;
+    $student_id = $_POST['student_id'];
+    $commend = "SELECT * FROM student WHERE student_id = $student_id";
+    $students = $con->query($commend);
+    $data = "";
+    foreach ($students as $student){
+        $data = $student;
+    }
+    
+    echo json_encode($data);
+}
 
 
 
-// student Update
+// Student Update
 function update(){
     echo '<div class="alert alert-success">Student Updated</div>';
+
+}
+
+// Student Delete
+function delete(){
+    global $con;
+    $student_id = $_POST['student_id'];
+
+    $commend = "DELETE FROM student WHERE student_id = '$student_id'";
+    $student = $con->query($commend);
+
+    if ($student) {
+        echo '<div class="alert alert-success">Student Deleted</div>';
+    }else{
+        echo '<div class="alert alert-danger">Student Deleted Failed</div>';
+    }
 
 }
