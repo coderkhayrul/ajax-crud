@@ -1,22 +1,22 @@
+// All Function Action Tigger
 jQuery(document).ready(function () {
     // e.preventDefault();
     student_all()
     jQuery('#save').click(function () {
         student_add();
     });
-    jQuery('#update').click(function () { 
+    jQuery('#update').click(function () {
         student_update();
     });
 });
 
-
-// Show All Student
-function student_all(){
+// All Student Get Function
+function student_all() {
     $.ajax({
         url: "operation.php",
         type: "POST",
         data: {
-            checker : 'students',
+            checker: 'students',
         },
         success: function (response) {
             $('.show-table').html(response);
@@ -25,8 +25,8 @@ function student_all(){
 }
 
 
-// Add Student
-function student_add(){
+// Student Insert Function
+function student_add() {
 
     // Get Value From Index Page
     var studentName = $('#studentName').val();
@@ -39,12 +39,12 @@ function student_add(){
         'url': "operation.php",
         'type': "POST",
         'data': {
-            studentName    : studentName,
-            studentEmail   : studentEmail,
-            studentPhone   : studentPhone,
-            studentAddress : studentAddress,
-            studentId : studentId,
-            checker        : 'insert',
+            studentName: studentName,
+            studentEmail: studentEmail,
+            studentPhone: studentPhone,
+            studentAddress: studentAddress,
+            studentId: studentId,
+            checker: 'insert',
         },
         success: function (response) {
             $('#message').html(response).fadeIn();
@@ -55,12 +55,13 @@ function student_add(){
     });
 }
 
-function student_edit($student_id){
+// Student Edit Function
+function student_edit($student_id) {
     $.ajax({
         type: "POST",
         url: "operation.php",
         data: {
-            student_id : $student_id,
+            student_id: $student_id,
             checker: 'edit',
         },
         dataType: "json",
@@ -74,11 +75,8 @@ function student_edit($student_id){
     });
 }
 
-
-
-
-// Update Student
-function student_update(){
+// Student Update Function
+function student_update() {
 
     var studentName = $('#studentName').val();
     var studentEmail = $('#studentEmail').val();
@@ -90,12 +88,12 @@ function student_update(){
         'url': "operation.php",
         'type': "POST",
         'data': {
-            studentName    : studentName,
-            studentEmail   : studentEmail,
-            studentPhone   : studentPhone,
-            studentAddress : studentAddress,
-            studentId      : studentId,
-            checker        : 'update',
+            studentName: studentName,
+            studentEmail: studentEmail,
+            studentPhone: studentPhone,
+            studentAddress: studentAddress,
+            studentId: studentId,
+            checker: 'update',
         },
         success: function (response) {
             $('#message').html(response).fadeIn();
@@ -106,13 +104,13 @@ function student_update(){
     });
 }
 
-
-function student_delete($student_id){
+// Student Delete Function
+function student_delete($student_id) {
     $.ajax({
         type: "POST",
         url: "operation.php",
         data: {
-            student_id : $student_id,
+            student_id: $student_id,
             checker: 'delete',
         },
         success: function (response) {
@@ -123,4 +121,3 @@ function student_delete($student_id){
         }
     });
 }
-
